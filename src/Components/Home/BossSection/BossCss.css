@@ -1,0 +1,32 @@
+.boss-section {
+    width: 100%;
+}
+
+.boss-section .boss-area {
+    width: 100%;
+    text-align: center;
+    background: url(../../../assets/home/chef-service.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 120px 0;
+}
+
+.boss-section .boss-area .boss-inner {
+    background: #FFF;
+    padding: 80px 10px;
+}
+
+.boss-section .boss-area .boss-inner h2 {
+    color: var(--Dark-01, #151515);
+    font-family: 'Cinzel', serif;
+    font-size: 45px;
+}
+
+.boss-section .boss-area .boss-inner p {
+    color: var(--Dark-01, #151515);
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 10px;
+}

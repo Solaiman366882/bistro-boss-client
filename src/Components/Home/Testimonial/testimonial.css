@@ -1,0 +1,43 @@
+.single-slider {
+    max-width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+    background: #fff;
+    padding: 15px 0;
+}
+
+.single-slider p {
+    color: var(--Dark-02, #444);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+    margin-bottom: 10px;
+    /* 175% */
+}
+
+.single-slider h2 {
+    color: #CD9003;
+    text-align: center;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.awssld__container {
+    padding-bottom: 30%;
+}
+
+.awssld {
+    background-color: #fff;
+}
+
+.awssld__bullets button {
+    display: none;
+}
+.awssld__content {
+    background-color: #fff;
+
+}
