@@ -10,7 +10,7 @@ import "./testimonial.css";
 const Testimonial = () => {
 	const [reviews, setReviews] = useState([]);
 	useEffect(() => {
-		fetch("/public/reviews.json")
+		fetch("/reviews.json")
 			.then((res) => res.json())
 			.then((data) => setReviews(data))
 			.catch((err) => console.log(err));

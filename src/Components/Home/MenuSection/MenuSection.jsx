@@ -8,7 +8,7 @@ const MenuSection = () => {
 	const [isShowAll, setShowAll] = useState(false);
 
 	useEffect(() => {
-		fetch("/public/menu.json")
+		fetch("/menu.json")
 			.then((res) => res.json())
 			.then((data) => {
 				setMenus(data);

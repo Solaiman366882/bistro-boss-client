@@ -1,4 +1,5 @@
-import Header from "../../Components/Header/Header";
+
+import { Helmet } from "react-helmet-async";
 import Banner from "../../Components/Home/Banner/Banner";
 import BossSection from "../../Components/Home/BossSection/BossSection";
 import CallSection from "../../Components/Home/CallSection/CallSection";
@@ -11,9 +12,9 @@ import Testimonial from "../../Components/Home/Testimonial/Testimonial";
 const Home = () => {
 	return (
 		<section className="w-full relative">
-			<div>
-				<Header></Header>
-			</div>
+			<Helmet>
+				<title>Bistro Boss</title>
+			</Helmet>
 			<div>
 				<Banner></Banner>
 			</div>

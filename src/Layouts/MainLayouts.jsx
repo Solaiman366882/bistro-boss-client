@@ -2,11 +2,15 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../Components/Footer/Footer";
 import "../assets/css/bistro.css";
+import Header from "../Components/Header/Header";
 
 
 const MainLayouts = () => {
     return (
         <div>
+            <div className="relative">
+				<Header></Header>
+			</div>
             <div>
                 <Outlet></Outlet>
             </div>
