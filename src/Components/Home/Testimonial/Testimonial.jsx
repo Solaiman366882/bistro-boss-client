@@ -10,19 +10,20 @@ import "./testimonial.css";
 const Testimonial = () => {
 	const [reviews, setReviews] = useState([]);
 	useEffect(() => {
-		fetch("/reviews.json")
+		fetch("http://localhost:5000/reviews")
 			.then((res) => res.json())
 			.then((data) => setReviews(data))
 			.catch((err) => console.log(err));
 	}, []);
+	console.log(reviews);
 
 	return (
 		<div className="w-full bg-white">
 			<div className="max-w-screen-xl mx-auto px-5">
 				<div>
 					<SectionTitle
-						subTitle={"---What Our Clients Say---"}
-						Title={"TESTIMONIALS"}
+						subTitle="---What Our Clients Say---"
+						Title="TESTIMONIALS"
 					></SectionTitle>
 				</div>
 				<div className="testimonial-section mt-8">

@@ -49,12 +49,12 @@ const Header = () => {
 			</li>
 			<li className="menu-links">
 				<NavLink
-					to="/shop"
+					to="/order"
 					className={({ isActive, isPending }) =>
 						isPending ? "pending" : isActive ? "active" : ""
 					}
 				>
-					our shop
+					Order
 				</NavLink>
 			</li>
 			<li className="menu-links">
