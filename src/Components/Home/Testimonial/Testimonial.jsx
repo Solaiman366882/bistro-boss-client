@@ -15,7 +15,6 @@ const Testimonial = () => {
 			.then((data) => setReviews(data))
 			.catch((err) => console.log(err));
 	}, []);
-	console.log(reviews);
 
 	return (
 		<div className="w-full bg-white">

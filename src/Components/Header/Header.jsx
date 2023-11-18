@@ -67,6 +67,16 @@ const Header = () => {
 					<img src={cartImg} className="w-12 object-contain" alt="" />
 				</NavLink>
 			</li>
+			<li className="menu-links">
+				<NavLink
+					to="/login"
+					className={({ isActive, isPending }) =>
+						isPending ? "pending" : isActive ? "active" : ""
+					}
+				>
+					login
+				</NavLink>
+			</li>
 		</>
 	);
 

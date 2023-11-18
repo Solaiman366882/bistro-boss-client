@@ -1,24 +1,24 @@
-
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../Components/Footer/Footer";
 import "../assets/css/bistro.css";
 import Header from "../Components/Header/Header";
 
-
 const MainLayouts = () => {
-    return (
-        <div>
-            <div className="relative">
-				<Header></Header>
+	const location = useLocation();
+    const isLogin = location.pathname.includes('login');
+	return (
+		<div>
+			<div className="relative">
+				{isLogin || <Header></Header>}
 			</div>
-            <div>
-                <Outlet></Outlet>
-            </div>
-            <div>
-                <Footer></Footer>
-            </div>
-        </div>
-    );
+			<div>
+				<Outlet></Outlet>
+			</div>
+			<div>
+				{isLogin || <Footer></Footer>}
+			</div>
+		</div>
+	);
 };
 
 export default MainLayouts;

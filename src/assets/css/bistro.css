@@ -1,4 +1,4 @@
-body{
+body {
     font-family: 'Inter', sans-serif;
 }
 
@@ -6,28 +6,35 @@ body{
 p.carousel-status {
     display: none;
 }
+
 ul.thumbs.animated {
     display: flex;
     justify-content: center;
 }
-.banner .carousel .control-prev.control-arrow:before{
+
+.banner .carousel .control-prev.control-arrow:before {
     border-right: 20px solid #fff;
 }
- .banner .carousel .control-next.control-arrow:before {
+
+.banner .carousel .control-next.control-arrow:before {
     border-left: 20px solid #fff;
 }
-.banner .carousel .control-arrow:before,  .banner .carousel.carousel-slider .control-arrow:before {
+
+.banner .carousel .control-arrow:before,
+.banner .carousel.carousel-slider .control-arrow:before {
     margin: 0 5px;
     display: inline-block;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
     content: '';
 }
-.title-section .sub-title{
+
+.title-section .sub-title {
     color: #D99904;
 
 }
-.title-section .title{
+
+.title-section .title {
     color: var(--Dark-01, #151515);
     font-size: 40px;
     padding: 20px 0;
@@ -35,9 +42,11 @@ ul.thumbs.animated {
     border-bottom: 3px solid #E8E8E8;
     margin-top: 10px;
 }
-.section-padding{
+
+.section-padding {
     padding: 90px 0;
 }
+
 .btn {
     display: inline-flex;
     padding: 20px 30px;
@@ -56,8 +65,62 @@ ul.thumbs.animated {
     background: var(--Dark-06, #E8E8E8);
     transition: 0.6s;
 }
+
 .btn:hover {
-    background: #1F2937; 
+    background: #1F2937;
     border-bottom: 3px solid transparent;
-    color: #BB8506; 
+    color: #BB8506;
 }
+
+/* ********************** Login Css Start ************************ */
+.login-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../others/authentication.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.login-section .login-area {
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.login-section .login-area h2 {
+    color: #151515;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.login-section .login-area .form-area .single-form{
+    margin-bottom: 20px;
+}
+.login-section .login-area .form-area .single-form:last-child{
+    margin-bottom: 0px;
+}
+.login-section .login-area .form-area .single-form label {
+    color: #444;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+.login-section .login-area .form-area .single-form label.captcha {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 8px 0;
+    position: relative;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+.login-section .login-area .form-area .single-form label.captcha a#reload_href {
+    position: absolute;
+    bottom: -30px;
+}
+
+/* ********************** Login Css End ************************ */
