@@ -6,15 +6,67 @@ import { useState } from "react";
 import "./Order.css";
 import { Card } from "keep-react";
 import useMenu from "../../Hooks/useMenu";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Order = () => {
 	const [tabIndex, setTabIndex] = useState(0);
+	const { user } = useAuth();
+	const navigate = useNavigate();
+	const location = useLocation();
+	const axiosSecure = useAxiosSecure();
 	const menus = useMenu();
 	const desserts = menus?.filter((menu) => menu.category === "dessert");
 	const pizzas = menus?.filter((menu) => menu.category === "pizza");
 	const salads = menus?.filter((menu) => menu.category === "salad");
 	const soups = menus?.filter((menu) => menu.category === "soup");
 	const drinks = menus?.filter((menu) => menu.category === "drinks");
+
+	const handleAddToCart = (food) => {
+		console.log("add to cart handle for", food, user);
+		if (user && user.email) {
+			const cartItem = {
+				userEmail: user.email,
+				food_id: food._id,
+				name: food.name,
+				recipe: food.recipe,
+				price: food.price,
+				image: food.image,
+			};
+			axiosSecure.post("/carts", cartItem).then((res) => {
+				console.log(res.data);
+				const data = res.data;
+				if (data.insertedId) {
+					Swal.fire({
+						title: "Sweet!",
+						text: `${food.name} added to the cart`,
+						imageUrl: `${food.image}`,
+						imageWidth: 400,
+						imageHeight: 200,
+						imageAlt: "food image",
+						showConfirmButton: false,
+						timer: 2000,
+					});
+				}
+			});
+		} else {
+			Swal.fire({
+				title: "You are not Logged In",
+				text: "Please login first",
+				icon: "info",
+				showCancelButton: true,
+				confirmButtonColor: "#3085d6",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "Yes, go to login",
+			}).then((result) => {
+				if (result.isConfirmed) {
+					navigate("/login", { state: location.pathname });
+				}
+			});
+		}
+	};
 
 	return (
 		<div>
@@ -56,7 +108,12 @@ const Order = () => {
 											</Card.Description>
 										</Card.Container>
 										<Card.Container className="flex items-center justify-center gap-5">
-											<button className="btn">
+											<button
+												className="btn"
+												onClick={() =>
+													handleAddToCart(item)
+												}
+											>
 												add to cart
 											</button>
 										</Card.Container>
@@ -87,7 +144,12 @@ const Order = () => {
 											</Card.Description>
 										</Card.Container>
 										<Card.Container className="flex items-center justify-center gap-5">
-											<button className="btn">
+											<button
+												className="btn"
+												onClick={() =>
+													handleAddToCart(item)
+												}
+											>
 												add to cart
 											</button>
 										</Card.Container>
@@ -118,7 +180,12 @@ const Order = () => {
 											</Card.Description>
 										</Card.Container>
 										<Card.Container className="flex items-center justify-center gap-5">
-											<button className="btn">
+											<button
+												className="btn"
+												onClick={() =>
+													handleAddToCart(item)
+												}
+											>
 												add to cart
 											</button>
 										</Card.Container>
@@ -149,7 +216,12 @@ const Order = () => {
 											</Card.Description>
 										</Card.Container>
 										<Card.Container className="flex items-center justify-center gap-5">
-											<button className="btn">
+											<button
+												className="btn"
+												onClick={() =>
+													handleAddToCart(item)
+												}
+											>
 												add to cart
 											</button>
 										</Card.Container>
@@ -180,7 +252,12 @@ const Order = () => {
 											</Card.Description>
 										</Card.Container>
 										<Card.Container className="flex items-center justify-center gap-5">
-											<button className="btn">
+											<button
+												className="btn"
+												onClick={() =>
+													handleAddToCart(item)
+												}
+											>
 												add to cart
 											</button>
 										</Card.Container>

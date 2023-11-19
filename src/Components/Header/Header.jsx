@@ -78,7 +78,7 @@ const Header = () => {
 						color="info"
 						icon={<FaCartShopping  size={22}/>}
 						iconPosition="right"
-					></Badge>
+					> <p>0</p> </Badge>
 				</NavLink>
 			</li>
 			<li className="menu-links">

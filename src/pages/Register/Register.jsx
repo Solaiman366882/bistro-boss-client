@@ -1,12 +1,15 @@
 import { Label, TextInput } from "keep-react";
 import authImg from "../../assets/others/authentication2.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
 	const { createUser } = useContext(AuthContext);
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from  =  location?.state ? location.state : "/";
 
 	const handleRegister = (e) => {
 		e.preventDefault();
@@ -19,6 +22,7 @@ const Register = () => {
 			.then((res) => {
 				const user = res.user;
 				console.log(user);
+				navigate(from);
 				Swal.fire({
 					title: "Good Job ?",
 					text: "Your Account Created",
@@ -64,6 +68,7 @@ const Register = () => {
 									<TextInput
 										placeholder="Enter your password"
 										name="password"
+										type="password"
 										color="gray"
 									/>
 								</div>

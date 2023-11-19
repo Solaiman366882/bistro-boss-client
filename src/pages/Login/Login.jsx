@@ -77,6 +77,7 @@ const Login = () => {
 									<TextInput
 										placeholder="Enter your password"
 										name="password"
+										type="password"
 										color="gray"
 									/>
 								</div>

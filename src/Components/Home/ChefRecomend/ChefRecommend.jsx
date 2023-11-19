@@ -3,6 +3,12 @@ import SectionTitle from "../../SectionTitle/SectionTitle";
 import cardImg from "../../../assets/home/slide1.jpg"
 
 const ChefRecommend = () => {
+
+	const handleAddToCart = () => {
+
+		console.log('cart handled');
+	}
+
 	return (
 		<div className="w-full">
 			<div className="max-w-screen-xl mx-auto px-20">
@@ -44,7 +50,7 @@ const ChefRecommend = () => {
 								</Card.Description>
 							</Card.Container>
 							<Card.Container className="flex items-center justify-center gap-5">
-								<button className="btn">add to cart</button>
+								<button className="btn" onClick={handleAddToCart}>add to cart</button>
 							</Card.Container>
 						</Card.Container>
 					</Card>
