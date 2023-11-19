@@ -1,10 +1,18 @@
-import { Navbar } from "keep-react";
+import { Badge, Navbar } from "keep-react";
 import logo from "../../assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
-import cartImg from "../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png";
+import { FaCartShopping } from "react-icons/fa6";
 import "./Header.css";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
+	const { user, userLogOut } = useContext(AuthContext);
+
+	const handleLogOut = () => {
+		userLogOut();
+	};
+
 	const links = (
 		<>
 			<li className="menu-links">
@@ -64,18 +72,35 @@ const Header = () => {
 						isPending ? "pending" : isActive ? "active" : ""
 					}
 				>
-					<img src={cartImg} className="w-12 object-contain" alt="" />
+					<Badge
+						size="sm"
+						colorType="light"
+						color="info"
+						icon={<FaCartShopping  size={22}/>}
+						iconPosition="right"
+					></Badge>
 				</NavLink>
 			</li>
 			<li className="menu-links">
-				<NavLink
-					to="/login"
-					className={({ isActive, isPending }) =>
-						isPending ? "pending" : isActive ? "active" : ""
-					}
-				>
-					login
-				</NavLink>
+				{user?.email ? (
+					<NavLink
+						onClick={handleLogOut}
+						className={({ isActive, isPending }) =>
+							isPending ? "pending" : isActive ? "active" : ""
+						}
+					>
+						logout
+					</NavLink>
+				) : (
+					<NavLink
+						to="/login"
+						className={({ isActive, isPending }) =>
+							isPending ? "pending" : isActive ? "active" : ""
+						}
+					>
+						login
+					</NavLink>
+				)}
 			</li>
 		</>
 	);
@@ -87,7 +112,11 @@ const Header = () => {
 					<Navbar.Container className="flex items-center">
 						<Navbar.Brand>
 							<Link to="/">
-								<img src={logo} className="w-10 lg:w-16" alt="" />
+								<img
+									src={logo}
+									className="w-10 lg:w-16"
+									alt=""
+								/>
 							</Link>
 						</Navbar.Brand>
 					</Navbar.Container>
@@ -105,7 +134,7 @@ const Header = () => {
 							{links}
 						</Navbar.Container>
 					</Navbar.Collapse>
-                    <Navbar.Toggle />
+					<Navbar.Toggle />
 				</Navbar.Container>
 			</Navbar>
 		</div>

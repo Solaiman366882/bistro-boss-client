@@ -5,17 +5,36 @@ import {
 	LoadCanvasTemplate,
 	validateCaptcha,
 } from "react-simple-captcha";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
 	const [disable, setDisable] = useState(true);
 	//const [captchaValue,setCaptchaValue] = useState('');
+	const { userLogin } = useContext(AuthContext);
+	const navigate = useNavigate();
+	const location = useLocation();
 	const handelLogin = (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const email = form.email.value;
 		const password = form.password.value;
 		console.log(email, password);
+
+		userLogin(email, password)
+			.then((res) => {
+				const user = res.user;
+				console.log(user);
+				navigate(location?.state ? location.state : "/");
+				Swal.fire({
+					title: "Successfully",
+					text: "Logged In !",
+					icon: "success",
+				});
+			})
+			.catch((err) => console.log(err));
 	};
 	useEffect(() => {
 		loadCaptchaEnginge(6);
@@ -74,9 +93,6 @@ const Login = () => {
 										type="text"
 										onChange={handleValidateCaptcha}
 									/>
-									{
-										// captchaValue.length > 0 ? <Button size="sm" type="primary" className="absolute top-1/2 right-0 -translate-y-1/2" value={captchaValue} onClick={handleValidateCaptcha}>Check</Button> : ""
-									}
 								</div>
 								<div className="single-form">
 									<button
@@ -89,6 +105,14 @@ const Login = () => {
 								</div>
 							</div>
 						</form>
+						<div className="mt-8 mb-6 text-center">
+							<p className="text-[#D1A054] text-xl font-inter font-medium ">
+								New here?{" "}
+								<Link className="font-bold" to="/register">
+									Create a New Account
+								</Link>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@ import Header from "../Components/Header/Header";
 
 const MainLayouts = () => {
 	const location = useLocation();
-    const isLogin = location.pathname.includes('login');
+    const isLogin = location.pathname.includes('login') || location.pathname.includes('register');
 	return (
 		<div>
 			<div className="relative">
