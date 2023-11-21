@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
 	const [disable, setDisable] = useState(true);
@@ -106,6 +107,9 @@ const Login = () => {
 								</div>
 							</div>
 						</form>
+						<div>
+							<SocialLogin></SocialLogin>
+						</div>
 						<div className="mt-8 mb-6 text-center">
 							<p className="text-[#D1A054] text-xl font-inter font-medium ">
 								New here?{" "}

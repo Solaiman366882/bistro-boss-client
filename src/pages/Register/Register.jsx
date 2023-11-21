@@ -4,12 +4,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Register = () => {
 	const { createUser } = useContext(AuthContext);
+	const axiosPublic = useAxiosPublic();
 	const navigate = useNavigate();
 	const location = useLocation();
-	const from  =  location?.state ? location.state : "/";
+	const from = location?.state ? location.state : "/";
 
 	const handleRegister = (e) => {
 		e.preventDefault();
@@ -21,13 +24,22 @@ const Register = () => {
 		createUser(email, password)
 			.then((res) => {
 				const user = res.user;
+				const userInfo = {
+					name,
+					email,
+				};
+				axiosPublic.post("/users", userInfo).then((result) => {
+					if (result.data.insertedId) {
+						console.log("user added to the database");
+						navigate(from);
+						Swal.fire({
+							title: "Good Job ?",
+							text: "Your Account Created",
+							icon: "success",
+						});
+					}
+				}).catch(err => console.log(err))
 				console.log(user);
-				navigate(from);
-				Swal.fire({
-					title: "Good Job ?",
-					text: "Your Account Created",
-					icon: "success",
-				});
 			})
 			.catch((err) => console.log(err));
 	};
@@ -82,6 +94,9 @@ const Register = () => {
 								</div>
 							</div>
 						</form>
+						<div>
+							<SocialLogin></SocialLogin>
+						</div>
 						<div className="mt-8 mb-6 text-center">
 							<p className="text-[#D1A054] text-xl font-inter font-medium ">
 								Already registered?

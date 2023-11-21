@@ -4,8 +4,12 @@ import logoImg from "../../../assets/logo.png";
 import { FaHome, FaShoppingCart } from "react-icons/fa";
 import { FaBars, FaCalendar, FaCalendarDay, FaEnvelope, FaOrcid, FaWallet } from "react-icons/fa6";
 import { MdReviews } from "react-icons/md";
+import useCart from "../../../Hooks/useCart";
 
 const Sidebar = () => {
+	const [cart] = useCart();
+	//Todo : get isAdmin from database
+	const isAdmin = true;
 	return (
 		<div>
 			<div className="w-72 bg-[#D1A054] min-h-screen p-6">
@@ -54,7 +58,7 @@ const Sidebar = () => {
 							}
 						>
 							<FaShoppingCart></FaShoppingCart>
-							My Cart
+							My Cart ({cart.length})
 						</NavLink>
 					</li>
 					<li>
@@ -79,6 +83,7 @@ const Sidebar = () => {
 							add review
 						</NavLink>
 					</li>
+					{/* Shared Links for all users */}
                     <div className="bg-white text-white my-5 w-full h-[2px]"></div>
                     <li>
 						<NavLink
