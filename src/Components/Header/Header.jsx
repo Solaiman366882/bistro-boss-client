@@ -5,9 +5,11 @@ import { FaCartShopping } from "react-icons/fa6";
 import "./Header.css";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useCart from "../../Hooks/useCart";
 
 const Header = () => {
 	const { user, userLogOut } = useContext(AuthContext);
+	const [cart] = useCart();
 
 	const handleLogOut = () => {
 		userLogOut();
@@ -67,7 +69,7 @@ const Header = () => {
 			</li>
 			<li className="menu-links">
 				<NavLink
-					to="/cart"
+					to="dashboard/cart"
 					className={({ isActive, isPending }) =>
 						isPending ? "pending" : isActive ? "active" : ""
 					}
@@ -78,7 +80,7 @@ const Header = () => {
 						color="info"
 						icon={<FaCartShopping  size={22}/>}
 						iconPosition="right"
-					> <p>0</p> </Badge>
+					> <p>+{cart.length}</p> </Badge>
 				</NavLink>
 			</li>
 			<li className="menu-links">

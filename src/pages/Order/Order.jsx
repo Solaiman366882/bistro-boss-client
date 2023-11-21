@@ -10,6 +10,7 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCart from "../../Hooks/useCart";
 
 const Order = () => {
 	const [tabIndex, setTabIndex] = useState(0);
@@ -18,6 +19,7 @@ const Order = () => {
 	const location = useLocation();
 	const axiosSecure = useAxiosSecure();
 	const menus = useMenu();
+	const [,refetch] = useCart();
 	const desserts = menus?.filter((menu) => menu.category === "dessert");
 	const pizzas = menus?.filter((menu) => menu.category === "pizza");
 	const salads = menus?.filter((menu) => menu.category === "salad");
@@ -36,9 +38,9 @@ const Order = () => {
 				image: food.image,
 			};
 			axiosSecure.post("/carts", cartItem).then((res) => {
-				console.log(res.data);
+				refetch();
 				const data = res.data;
-				if (data.insertedId) {
+				if (data?.insertedId) {
 					Swal.fire({
 						title: "Sweet!",
 						text: `${food.name} added to the cart`,

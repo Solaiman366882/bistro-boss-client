@@ -1,7 +1,7 @@
 .header-section {
     padding: 0 14px;
     background: rgba(21, 21, 21, 0.50);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
